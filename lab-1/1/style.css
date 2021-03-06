@@ -1,0 +1,21 @@
+body {
+      padding: 20px;
+      text-align: center;
+      background-color: #f5f5f5;
+      color: red;
+
+}
+
+#inc{
+
+    margin-top: 12px;
+    color: blue;
+    background-color: black;
+}
+
+#mesaj{
+
+    text-align: left;
+    color: blue;
+    font-size: large;
+}
