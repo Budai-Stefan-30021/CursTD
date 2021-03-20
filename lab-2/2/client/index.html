@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="utf-8" http-equiv="encoding"/>
+    <title>Users manager</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/style.css"/>
+    <script type="text/javascript" src="libs/vue.js"></script>
+    <script type="text/javascript" src="libs/axios.js"></script>
+    <script type="text/javascript" src="src/users-service.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <div class="title">Users</div>
+
+    <ul class="user-list">
+        <li>
+            <div class="user-row-header">
+                <div class="user-name">Name</div>
+                <div class="user-city">City</div>
+                <div></div>
+            </div>
+        </li>
+
+        <li v-for="(user, index) in users">
+            <div class="user-row">
+                <input v-model="user.name">
+                <input v-model="user.city">
+                <button v-on:click="changeUser(index)">Modify</button>
+                <!--<div class="user-name">{{ user.name }}</div>
+                <div class="user-city"><i>{{ user.city }}</i></div>-->
+                <button v-on:click="deleteUser(index)">Delete</button>
+            </div>
+        </li>
+    </ul>
+    <button v-if="showNewUser" v-on:click="showNewUser = !showNewUser">Close</button>
+    <button v-else="showNewUser" v-on:click="showNewUser = !showNewUser">Add new user</button>
+    <div v-show="showNewUser">
+        <form>
+            <label for="user-name">User name:</label>
+            <input id="user-name" v-model="newUser.name">
+            <br>
+            <label for="user-city">User city:</label>
+            <input id="user-city" v-model="newUser.city">
+            <br>
+            <a href="#" v-on:click="addUser">Add user</a>
+        </form>
+    </div>
+</div>
+<script src="src/app.js"></script>
+</body>
+</html>
