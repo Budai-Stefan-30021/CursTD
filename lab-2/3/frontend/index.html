@@ -1,26 +1,33 @@
 <html>
-  <head>
+<head>
     <title>Chat client</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
-      rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+            rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="app">
-      <h3 id="client-id"></h3>
-      <div class="messages"></div>
-      <input
-        class="message"
-        type="text"
-        id="message"
-        placeholder="Write a message"
-      />
-      <button class="send-button" id="send">Send</button>
+    <link rel="stylesheet" href="style.css"/>
+  <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+  <script type="text/javascript" src="libs/vue.js"></script>
+</head>
+<body>
+<div class="app" id="app">
+    <h3 id="client-id">{{ clientId }}</h3>
+    <div class="messages">
+        <p v-for="(entry, index) in entries">
+            {{ entry.id}} : {{ entry.message }}
+        </p>
     </div>
+    <input
+            class="message"
+            type="text"
+            id="message"
+            v-model="message"
+            placeholder="Write a message"
+    />
+    <button class="send-button" id="send" v-on:click="sendMessage">Send</button>
+</div>
 
-    <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
-    <script src="client.js"></script>
-  </body>
+
+<script src="client.js"></script>
+</body>
 </html>
